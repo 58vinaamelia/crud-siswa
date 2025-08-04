@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Halaman Tambah Siswa</title>
+</head>
+<body>
+
+    <h1>Halaman Tambah Siswa</h1>
+    <p>Tambah Data Siswa</p>
+    <a href="/">Kembali</a>
+
+    <form action="/siswa/store" method="post">
+        @csrf
+
+        <br>
+        <div>
+            <label for="">Kelas</label>
+            <br>
+            <select name="kelas_id">
+                <option value="1">XII PPLG 1</option>
+                <option value="2">XII PPLG 2</option>
+                <option value="3">XII PPLG 3</option>
+            </select><br>
+            @error('kelas_id')
+                <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
+
+        <br>
+        <div>
+            <label for="">Name</label>
+            <br>
+            <input type="text" name="name">
+            <br>
+            @error('name')
+             <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
+
+        <br>
+        <div>
+            <label for="">Nisn</label>
+            <br>
+            <input type="text" name="nisn">
+             <br>
+            @error('nisn')
+             <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
+
+        <br>
+        <div>
+            <label for="">Alamat</label>
+            <br>
+            <input type="text" name="alamat">
+             <br>
+            @error('alamat')
+             <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
+
+        <br>
+        <div>
+            <label for="">Email</label>
+            <br>
+            <input type="text" name="email">
+             <br>
+            @error('email')
+             <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
+
+        <br>
+        <div>
+            <label for="">Password</label>
+            <br>
+            <input type="password" name="password">
+             <br>
+            @error('password')
+             <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
+
+        <br>
+        <div>
+            <label for="">No Handphone</label>
+            <br>
+            <input type="tel" name="no_handphone">
+             <br>
+            @error('no_handphone')
+             <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
+        <div>
+            <label for="">Photo</label>
+            <br>
+            <input type="file" name=photo>
+        </div>
+
+        <br>
+        <div>
+            <button type="submit">Simpan</button>
+        </div>
+
+    </form>
+
+</body>
+</html>
