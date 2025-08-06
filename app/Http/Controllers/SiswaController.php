@@ -9,8 +9,10 @@ use App\Http\Controllers\SiswaController;
 
 class SiswaController extends Controller
 {
-    public function index() {
-        return view('siswa.index');
+  public function index() {
+    $siswas = User::all(); // GANTI ini
+    return view('siswa.index', compact('siswas')); 
+
     }
 
     public function create(){
