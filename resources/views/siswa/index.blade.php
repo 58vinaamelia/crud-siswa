@@ -28,19 +28,31 @@
                     @foreach ($siswas as $siswa)
                     <tr>
                         <td><img src="{{ asset('storage/' . $siswa->photo) }}" alt="" width="40"></td>
-                        <td>{{$siswa->name}}</td>
-                        <td>{{$siswa->Clas->name}}</td>
-                         <td>{{$siswa->nisn}}</td>
-                        <td>{{$siswa->alamat}}</td>
+                        <td>{{ $siswa->name }}</td>
+                        <td>{{ $siswa->Clas->name }}</td>
+                        <td>{{ $siswa->nisn }}</td>
+                        <td>{{ $siswa->alamat }}</td>
                         <td class="option-links">
-                        <a href="#">Hapus</a>
-                        <a href="#">Edit</a>
-                        <a href="#">Detail</a>
+                            {{-- Delete --}}
+                            <a href="#" onclick="event.preventDefault(); if(confirm('Apakah kamu yakin ingin menghapus data ini?')) { document.getElementById('delete-form-{{ $siswa->id }}').submit(); }">
+                                Delete 
+                            </a>
+
+                            {{-- Form delete tersembunyi --}}
+                            <form id="delete-form-{{ $siswa->id }}" action="{{ url('/siswa/' . $siswa->id) }}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+
+                            {{-- Edit --}}
+                            <a href="{{ url('/siswa/' . $siswa->id . '/edit') }}">Edit</a>
+
+                            {{-- Detail --}}
+                            <a href="{{ url('/siswa/' . $siswa->id) }}">Detail</a>
                         </td>
-                        </tr>
-                      @endforeach
                     </tr>
-                    </tbody>
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>
