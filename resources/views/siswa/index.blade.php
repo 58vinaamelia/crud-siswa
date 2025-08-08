@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -35,7 +35,7 @@
                         <td class="option-links">
                             {{-- Delete --}}
                             <a href="#" onclick="event.preventDefault(); if(confirm('Apakah kamu yakin ingin menghapus data ini?')) { document.getElementById('delete-form-{{ $siswa->id }}').submit(); }">
-                                Delete 
+                                Delete
                             </a>
 
                             {{-- Form delete tersembunyi --}}
@@ -44,11 +44,10 @@
                                 @method('DELETE')
                             </form>
 
-                            {{-- Edit --}}
-                            <a href="{{ url('/siswa/' . $siswa->id . '/edit') }}">Edit</a>
+                            <a href="{{url('/siswa/'.$siswa->id. '/edit')}}">Edit</a>
 
-                            {{-- Detail --}}
-                            <a href="{{ url('/siswa/' . $siswa->id) }}">Detail</a>
+                            <a href="{{ url('/siswa/show/' . $siswa->id) }}">Detail</a>
+
                         </td>
                     </tr>
                     @endforeach
