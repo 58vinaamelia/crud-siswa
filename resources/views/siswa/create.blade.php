@@ -15,93 +15,107 @@
     <form action="/siswa/store" method="post" enctype="multipart/form-data">
         @csrf
 
-        <br>
+        {{-- Pilih Kelas --}}
         <div>
-            <label for="">Kelas</label>
+            <label for="clas_id">Kelas</label>
             <br>
-            <select name="kelas_id">
+            <select name="clas_id" id="clas_id">
                @foreach ($clases as $clas)
-                <option value="{{ $clas->id }}">{{ $clas->name }}</option>
-                @endforeach
-
-            </select><br>
-            @error('kelas_id')
-                <small style="color: red">{{$message}}</small>
+                    <option value="{{ $clas->id }}">{{ $clas->name }}</option>
+               @endforeach
+            </select>
+            <br>
+            @error('clas_id')
+                <small style="color: red">{{ $message }}</small>
             @enderror
         </div>
 
         <br>
+        {{-- Name --}}
         <div>
-            <label for="">Name</label>
+            <label for="name">Name</label>
             <br>
-            <input type="text" name="name">
+            <input type="text" name="name" id="name" value="{{ old('name') }}">
             <br>
             @error('name')
-             <small style="color: red">{{$message}}</small>
+                <small style="color: red">{{ $message }}</small>
             @enderror
         </div>
 
         <br>
+        {{-- NISN --}}
         <div>
-            <label for="">Nisn</label>
+            <label for="nisn">Nisn</label>
             <br>
-            <input type="text" name="nisn">
-             <br>
+            <input type="text" name="nisn" id="nisn" value="{{ old('nisn') }}">
+            <br>
             @error('nisn')
-             <small style="color: red">{{$message}}</small>
+                <small style="color: red">{{ $message }}</small>
             @enderror
         </div>
 
         <br>
+        {{-- Alamat --}}
         <div>
-            <label for="">Alamat</label>
+            <label for="alamat">Alamat</label>
             <br>
-            <input type="text" name="alamat">
-             <br>
+            <input type="text" name="alamat" id="alamat" value="{{ old('alamat') }}">
+            <br>
             @error('alamat')
-             <small style="color: red">{{$message}}</small>
+                <small style="color: red">{{ $message }}</small>
             @enderror
         </div>
 
         <br>
+        {{-- Email --}}
         <div>
-            <label for="">Email</label>
+            <label for="email">Email</label>
             <br>
-            <input type="text" name="email">
-             <br>
+            <input type="email" name="email" id="email" value="{{ old('email') }}">
+            <br>
             @error('email')
-             <small style="color: red">{{$message}}</small>
+                <small style="color: red">{{ $message }}</small>
             @enderror
         </div>
 
         <br>
+        {{-- Password --}}
         <div>
-            <label for="">Password</label>
+            <label for="password">Password</label>
             <br>
-            <input type="password" name="password">
-             <br>
+            <input type="password" name="password" id="password">
+            <br>
             @error('password')
-             <small style="color: red">{{$message}}</small>
+                <small style="color: red">{{ $message }}</small>
             @enderror
         </div>
 
         <br>
+        {{-- No Handphone --}}
         <div>
-            <label for="">No Handphone</label>
+            <label for="no_handphone">No Handphone</label>
             <br>
-            <input type="tel" name="no_handphone">
-             <br>
+            <input type="tel" name="no_handphone" id="no_handphone" value="{{ old('no_handphone') }}">
+            <br>
             @error('no_handphone')
-             <small style="color: red">{{$message}}</small>
+                <small style="color: red">{{ $message }}</small>
             @enderror
-        </div>
-        <div>
-            <label for="">Photo</label>
-            <br>
-            <input type="file" name=photo>
         </div>
 
         <br>
+        {{-- Photo --}}
+        <div>
+            <label for="photo">Photo</label>
+            <br>
+            <input type="file" name="photo" id="photo" accept="image/*">
+            <br>
+            @error('photo')
+                <small style="color: red">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <br>
+        {{-- Tombol Submit --}}
         <div>
             <button type="submit">Simpan</button>
         </div>
