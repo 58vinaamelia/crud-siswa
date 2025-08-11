@@ -40,7 +40,7 @@ class SiswaController extends Controller
 
      //siapa data yanag akan di masukan
       $datasiswa_store =[
-        'clas_id'          => $request->kelas,
+        'clas_id'          => $request->clas_id,
         'name'             => $request->name,
         'nisn'             => $request->nisn,
         'alamat'           => $request->alamat,
@@ -83,4 +83,16 @@ class SiswaController extends Controller
         return view('siswa.show',compact('datauser'));
 
 }
+    //fungsi untukmengarahkan user ke halaman edit siswa
+    public function edit($id){
+        //siapkan data kelas dan tampung datanya kedalam variabel
+        $clases  = Clas::all();
+
+        //ambil data user berdasarkan id yang di kirimkan
+        $datauser =User::find($id);
+        if($datauser == null){
+             return redirect('/');
+        }
+        return view('siswa.edit',compact('datauser', 'clases'));
+    }
 }
