@@ -6,17 +6,17 @@
         <title>Edit Data Siswa</title>
     </head>
     <body>
-        <h1>Halaman Tambah Siswa</h1>
-        <h1>Tambah Data Siswa</h1>
+        <h1>Halaman edit Siswa</h1>
+        <h1>Edit Data Siswa</h1>
         <a href="/">Kembali</a>
         <br>
-        <img width="70" src="{{ asset('storage/'. $datauser->photo) }}"
-        <form action="/siswa/store" method="post" enctype="multipart/form-data" >
+        <img width="70" src="{{ asset('storage/'. $datauser->photo) }}">
+        <form action="/siswa/update/{{ $datauser->id }}" method="post" enctype="multipart/form-data" >
         @csrf
     <br>
         <label for="">Kelas</label>
         <br>
-        <select name="kelas_id">
+        <select name="clas_id">
             @foreach ($clases as $clas )
             <option {{ $clas->id== $datauser->class_id ? 'selected' : '' }} value="{{ $clas->id }}">{{ $clas->name }}</option>
             @endforeach
