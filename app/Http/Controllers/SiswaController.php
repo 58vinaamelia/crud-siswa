@@ -111,13 +111,28 @@ class SiswaController extends Controller
 
         //menyiapkan data dalam array untuk update data
        $datasiswa_update =[
-        'clas_id'          => $request->clas_id,
-        'name'             => $request->name,
-        'nisn'             => $request->nisn,
-        'alamat'           => $request->alamat,
-        'email'            => $request->email,
-        'no_handphone'     => $request->no_handphone,
-    ];
+            'clas_id'          => $request->clas_id,
+            'name'             => $request->name,
+            'nisn'             => $request->nisn,
+            'alamat'           => $request->alamat,
+            'email'            => $request->email,
+            'no_handphone'     => $request->no_handphone,
+        ];
+
+        //cek apakah user mengubah password atau tidak
+        if ($request->password) {
+            $datasiswa_update['password'] = ($request->password);
+        }
+
+
+        // cek apakah user mengubah gambar atau tidak
+        if ($request->hasFile('photo')) {
+            // hapus gambar lama kalau ada
+            Storage::disk('public')->delete($datasiswa->photo);
+            // upload gambar baru
+            $datasiswa_update['photo'] = $request->file('photo')->store('profilesiswa', 'public');
+        }
+
 
         //update data sesuai dengan data siswa/user yang sudah disiapkan
         $datasiswa->update($datasiswa_update);
