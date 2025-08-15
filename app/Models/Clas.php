@@ -14,6 +14,8 @@ class Clas extends Model
 
         $clases = Clas::all();
 
-        return $this->hasMany(User::clas, 'clas_id');
+        return $this->hasMany(User::class, 'clas_id');
     }
+
+
 }
