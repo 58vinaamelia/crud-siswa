@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Kelas</title>
-</head>
+@extends('layouts.app')
+@section('title')
+    <title>Edit Clas</title>
+@endsection
+@section('content')
 <body>
     <h1>Edit Data Kelas</h1>
     <form action="{{ route('clas.update', $clas->id) }}" method="POST">
@@ -28,5 +26,4 @@
         <button type="submit">Update</button>
         <a href="{{ route('clas.index') }}">Batal</a>
     </form>
-</body>
-</html>
+@endsection
